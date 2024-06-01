@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-configs
+data:
+  MYSQL_HOST: mysql-deployment-0.mysql-db-service.default.svc
+  MYSQL_USER: root
+  MYSQL_DB: userdb

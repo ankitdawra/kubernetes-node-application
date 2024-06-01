@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-rolling-update-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      name: nodejs-app-pod
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+        - name: nodejs-image
+          image: ankitdawra/nodejs-image:latest2
+          # imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "100m"
+            requests:
+              cpu: "100m"
+          envFrom:
+            - configMapRef:
+                name: mysql-configs
+            - secretRef:
+                name: mysql-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-service
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 5000
+      port: 5000
+  selector:
+    app: nodejs-app
