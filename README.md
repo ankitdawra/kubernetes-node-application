@@ -1,8 +1,10 @@
 # kubernetes-node-application
 
 <h4>Docker image URL:</h4>
-
 https://hub.docker.com/layers/ankitdawra/nodejs-image/latest2/images/sha256-1c9b51b7784e0f0a7fc8a4e203252cb1a9380950f5b0ad35218af7eee41fdc68
+
+<h4>URL for Service Tier (when setup done)</h4>
+http://localhost:5000
 
 <br/>
 
